@@ -9,6 +9,7 @@ Technology
 ----------
 It uses the opendata API for antwerp based on theDataTank, a RESTful data management system (http://thedatatank.com).
 The mapping API is the ArcGIS API for JavaScript ESRI (https://developers.arcgis.com)
+
 See a live demo: http://kaywarrie.com/mobile/ 
 
 
