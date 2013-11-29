@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<link rel="shortcut icon" href="http://www.dna.be/sites/all/themes/dna/images/favicon.ico" type="image/vnd.microsoft.icon" />
+	<meta name="MobileOptimized" /><meta name="HandheldFriendly" content="true" />
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="translucent-black" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=7,IE=9" />
+	<meta name="description" content="Mobile GISviewer for Consulting the Antwerp Opendata platform" />
+	<meta name="author" content="Kay Warrie" />
+  
+	<title>Opendata Raadpleeg App</title>
+	<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/dojo/dojox/mobile/themes/iphone/iphone.css" />
+	<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/esri/css/esri.css" />
+    <link rel="stylesheet" type='text/css' href='http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/esri/dijit/css/Popup.css'/>
+	
+	<style type="text/css">
+			html, body {
+				height: 100%;
+				margin: 0px;
+				padding: 0px;
+				width: 100%;
+			}
+			.iPhone { 
+				background-color: #cdd5df; 
+				}
+			
+			#map , #view1  {
+				height:100%;
+				width: 100%;
+				overflow: hidden;
+			}
+			#move1	{
+				position:absolute;
+				right:5px;
+				top:2px;
+				z-index: 99;
+			}
+			#status {
+				font-size: 19px ;
+				color:red ; 
+				position: absolute; 
+				z-index: 300; 
+				right: 50%; 
+				top: 50%;
+			}
+			#toIndex {
+				position:absolute; 
+				left:5px; 
+				top:2px; 
+				z-index:100
+			}
+			
+			#zoomSlider {
+				position:absolute; 
+				left:10px; 
+				top:50px; 
+				width:20px; 
+				height:20px; 
+				z-index:100
+			}			
+			#zoomSlider button {
+				font-size: 34px ;
+				height: 45px; 
+				width: 48px
+			}
+			#popupDiv.esriPopup * div {
+				max-width: 200px;
+			}
+			.titleButton.close {
+				background-color: red;
+			}
+			.titleButton.maximize {
+				visibility: hidden;
+			}
+			
+			#view2 {
+				height: 100%;
+				width: 100%;
+			}
+			
+			#attributetable {
+			   height: 95%;
+			}
+			
+			#attributetable .dgrid {
+			     height: auto;
+			     font-size: 12px;
+			}
+			
+			#attributetable .dgrid .dgrid-scroller {
+			    position: relative;
+			    overflow: auto;
+			    max-height: 100%;
+			}
+			#attributetable .dgrid-cell {
+				font-size: 12px;
+			}
+		</style>
+	
+	<script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=3.2compact"></script>
+	<script type="text/javascript">
+      dojo.config = {
+        parseOnLoad : true  ,
+        isDebug: true ,
+        packages: [{
+          "name": "extras",
+          "location": location.pathname.replace(/\/[^/]+$/, '') + "/extras"
+        }]
+      };
+    </script>
+
+    <script type="text/javascript" src="attributes.js" ></script>
+	<script type="text/javascript" src="main.js" ></script>
+
+</head>
+
+<body  class="iPhone">
+<div id="view1" data-dojo-type="dojox.mobile.View" 
+	onAfterTransitionOut="mapactive=0" selected="true">
+	<div id="toIndex" >
+	<button data-dojo-type="dojox.mobile.ToolBarButton" align="center"
+	href="index.html"  hrefTarget="_parent" >Terug</button>
+	</div>
+  	<h1 data-dojo-type="dojox.mobile.Heading" 
+  	data-dojo-props='next:"View 2",  moveTo:"view2"'>Kaart</h1> 
+  	<span id='move1' data-dojo-type="dojox.mobile.ToolBarButton" 
+    data-dojo-props='arrow:"right", moveTo:"view2", transition:"slide", transitionDir:1'>Tabel ></span> 
+
+	<div id="map" >
+		<div id='zoomSlider' align="center" >
+          <button data-dojo-type="dojox.mobile.ToolBarButton" align="center" onclick="zoomIn();">+</button>
+          <br />
+          <button  data-dojo-type="dojox.mobile.ToolBarButton" align="center" onclick="zoomOut();">-</button>
+        </div>
+        <div id="popupDiv" ></div>
+	</div>
+	
+	<span id="baseSpan" style=" position: absolute; z-index: 300; right: 5px; top: 50px"  >
+	 <button style="opacity: 0.4" id="baseBtn" onclick="baseSwitch();" > Luchtfoto </button> 
+	</span>
+</div>
+
+<div id="view2" data-dojo-type="dojox.mobile.View" onAfterTransitionIn="tabelActive()" 
+	onAfterTransitionOut="mapactive=1" >
+  <h1 data-dojo-type="dojox.mobile.Heading" 
+      data-dojo-props='back:"Kaart",  moveTo:"view1"'>Tabel</h1>
+    <div id="attributetable" ></div> 
+</div>
+
+<span id="status"  align="center">
+  <img id="loadingImg" src="loading.gif" /><br/>
+ 		Loading ... 
+</span>	
+
+		
+</body>
+</html>
+

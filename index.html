@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport"
+             content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Opendata geoviewer: Overzicht</title>
+    <script data-dojo-config="async:true"
+            src="//ajax.googleapis.com/ajax/libs/dojo/1.8.1/dojo/dojo.js">
+    </script>
+    <script>
+        // Load the parser, base widgets, device theme, compat
+        require(["dojox/mobile/parser", "dojox/mobile", "dojox/mobile/deviceTheme", "dojox/mobile/compat"],
+          function(parser) {
+            // Parse the page!
+            parser.parse();
+          }
+        );
+    </script>
+</head>
+
+<body >
+<div id="view1" data-dojo-type="dojox.mobile.View" 
+	onAfterTransitionOut="mapactive=0" selected="true">
+  	<h1 data-dojo-type="dojox.mobile.Heading" >Opendata geoviewer overzicht</h1> 
+	
+	<div data-dojo-type="dojox.mobile.RoundRect" data-dojo-props='shadow:true'>
+	  Om de onderstaande kaartlaag om te bekijken klik op de naam. 
+	  Alle data komt rechtstreeks van de open data site van Antwerpen.
+	</div>
+	
+	<ul dojoType="dojox.mobile.RoundRectList">
+        
+        <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPoint.png"
+        href="main.html?odjson=http://api.antwerpen.be/v1/infrastructuur/glascontainer.jsonp"
+        hrefTarget="_parent" >
+           Glascontainers
+        </li>
+        
+        <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPolygon.png" 
+        href="main.html?odjson=http://api.antwerpen.be/v1/geografie/grenzendistrict.jsonp"
+        hrefTarget="_parent" >
+            Grenzen districten
+        </li>
+        
+        <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPolygon.png" 
+        href="main.html?odjson=http://api.antwerpen.be/v1/geografie/postzone.jsonp"
+        hrefTarget="_parent" >
+            Postzones
+        </li>
+
+        <li dojoType="dojox.mobile.ListItem"  data-dojo-props='icon:"images/SelectByPolygon.png"'
+        href="main.html?odjson=http://api.antwerpen.be/v1/geografie/wijkomgevingsinformatie.jsonp"
+        hrefTarget="_parent" >
+            Buurtmonitor - wijken
+        </li>
+
+        <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPolygon.png" 
+        href="main.html?odjson=http://api.antwerpen.be/v1/geografie/statistischesector.jsonp"
+        hrefTarget="_parent" >
+            Buurten (statistische sectoren)
+        </li>
+
+        
+        <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPoint.png" 
+        href="main.html?odjson=http://api.antwerpen.be/v1/infrastructuur/scholen.jsonp"
+        hrefTarget="_parent" >
+            Scholen
+        </li>
+        
+        <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPoint.png" 
+        href="main.html?odjson=http://api.antwerpen.be/v1/infrastructuur/brandweerkazerne.jsonp"
+        hrefTarget="_parent" >
+            Brandweerkazernes
+        </li>
+        
+        <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPoint.png" 
+        href="main.html?odjson=http://api.antwerpen.be/v1/infrastructuur/groenzone.jsonp"
+        hrefTarget="_parent" >
+            Groenzones
+        </li>
+        
+        
+        <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPoint.png" 
+        href="main.html?odjson=http://api.antwerpen.be/v1/infrastructuur/hondenloopzone.jsonp"
+        hrefTarget="_parent" >
+            Hondenloopzones
+        </li>
+                
+        <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPoint.png" 
+        href="main.html?odjson=http://api.antwerpen.be/v1/infrastructuur/districtshuis.jsonp"
+        hrefTarget="_parent" >
+            Districtshuizen
+        </li>
+        
+        <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPoint.png" 
+        href="main.html?odjson=http://api.antwerpen.be/v1/infrastructuur/speelterrein.jsonp"
+        hrefTarget="_parent" >
+            Speelterreinen
+        </li>
+        
+        <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPoint.png" 
+        href="main.html?odjson=http://api.antwerpen.be/v1/infrastructuur/papiermand.jsonp"
+        hrefTarget="_parent" >
+            Papiermanden
+        </li>
+        
+         <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPoint.png" 
+        href="main.html?odjson=http://api.antwerpen.be/v1/infrastructuur/openbaartoilet.jsonp"
+        hrefTarget="_parent" >
+            Openbare toileten
+        </li>
+        
+         <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPoint.png"
+        href="main.html?odjson=http://api.antwerpen.be/v1/infrastructuur/sport.jsonp"
+        hrefTarget="_parent" >
+           Sportlocaties
+        </li>
+        
+        <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPoint.png"
+        href="main.html?odjson=http://api.antwerpen.be/v1/infrastructuur/ziekenhuis.jsonp"
+        hrefTarget="_parent" >
+           Ziekenhuizen
+        </li>
+        
+        <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPoint.png"
+        href="main.html?odjson=http://api.antwerpen.be/v1/infrastructuur/sport.jsonp"
+        hrefTarget="_parent" >
+           Cultuurlocaties
+        </li>
+        
+         <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPoint.png"
+        href="main.html?odjson=http://api.antwerpen.be/v1/infrastructuur/cultuur.jsonp"
+        hrefTarget="_parent" >
+           Politiekantoren
+        </li>
+        
+        <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPoint.png"
+        href="main.html?odjson=http://api.antwerpen.be/v1/infrastructuur/stadskantoor.jsonp"
+        hrefTarget="_parent" >
+           Stadskantoor locaties
+        </li>
+
+        <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPoint.png"
+        href="main.html?odjson=http://api.antwerpen.be/v1/infrastructuur/politie.jsonp"
+        hrefTarget="_parent" >
+           Recyclageparken
+        </li>
+        
+        <li dojoType="dojox.mobile.ListItem" icon="images/SelectByPoint.png"
+        href="main.html?odjson=http://api.antwerpen.be/v1/infrastructuur/woonkantoor.jsonp"
+        hrefTarget="_parent" >
+           Woonkantoren
+        </li>
+
+    </ul>
+</div>
+		
+</body>
+</html>
